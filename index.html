@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Woot!</title>
+  </head>
+  <body>
+    <h1>Woot!</h1>
+<code><pre>$('button').click(function () {
+    $.get($(this).text(), function (a) {
+        $('#data').html(a)
+    })
+})</pre></code>
+    <button>hash160://hello</button>
+    <button>hash256://hello</button>
+    <button>sha256://hello</button>
+    <button>rmd160://hello</button>
+    <p id="data">...</p>
+    <script>
+      require('./renderer.js')
+    </script>
+  </body>
+</html>
