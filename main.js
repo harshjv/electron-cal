@@ -3,31 +3,28 @@ const path = require('path')
 const {app, protocol, BrowserWindow} = require('electron')
 let mainWindow
 
-const list = [ 'hash160', 'hash256', 'sha256', 'rmd160' ]
+const chains = [ 'ethereum', 'bitcoin' ]
+const chainsWithHttps = [ ...chains, ...chains.map(chain => `${chain}+s`) ]
 
-protocol.registerStandardSchemes(list)
+protocol.registerStandardSchemes(chainsWithHttps)
 
-function regAlgo () {
-  list.forEach(algo => {
-    protocol.registerStringProtocol(algo, (request, callback) => {
+function registerChains () {
+  chainsWithHttps.forEach(chain => {
+    protocol.registerHttpProtocol(chain, (request, callback) => {
       const { url } = request
-      const req = url.substring(url.indexOf('://') + 3)
-      var buffer = new Buffer(req)
-      const data = cryptoHash(algo, buffer).toString('hex')
-      callback({data})
-    }, (error) => {
-      if (error) console.error('Failed to register protocol')
+
+      mainWindow.loadURL('file://' + path.join(__dirname, 'chain.html') + '?uri=' + url)
     })
   })
 }
 
 app.on('ready', () => {
-  regAlgo()
+  registerChains()
 })
 
 function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
-  mainWindow.loadFile('index.html')
+  mainWindow.loadURL('file://' + path.join(__dirname, 'index.html'))
   mainWindow.on('closed', function () {
     mainWindow = null
   })

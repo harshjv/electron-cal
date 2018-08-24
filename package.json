@@ -1,11 +1,11 @@
 {
-  "name": "Woot",
-  "productName": "woot",
-  "description": "My Electron application description",
+  "name": "cal-terminal",
+  "productName": "CAL Terminal",
+  "description": "ChainAbstractionLayer Terminal",
   "keywords": [],
   "main": "./main.js",
   "version": "1.0.0",
-  "author": "harsh",
+  "author": "Harsh Vakharia <me@harshjv.com>",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -31,7 +31,7 @@
         "protocols": [
           {
             "name": "woot",
-            "schemes": [ "hash160", "hash256", "sha256", "rmd160" ]
+            "schemes": [ "bitcoin", "bitcoin+s", "ethereum", "ethereum+s" ]
           }
         ]
       },

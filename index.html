@@ -2,20 +2,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Woot!</title>
+    <title>ChainAbstractionLayer</title>
   </head>
   <body>
-    <h1>Woot!</h1>
-<code><pre>$('button').click(function () {
-    $.get($(this).text(), function (a) {
-        $('#data').html(a)
-    })
-})</pre></code>
-    <button>hash160://hello</button>
-    <button>hash256://hello</button>
-    <button>sha256://hello</button>
-    <button>rmd160://hello</button>
-    <p id="data">...</p>
+    <h1>ChainAbstractionLayer</h1>
+    <button>bitcoin://bitcoin:local321@btc.liquality.io/</button>
+    <button>bitcoin+s://bitcoin:local321@btc.liquality.io/</button>
     <script>
       require('./renderer.js')
     </script>
